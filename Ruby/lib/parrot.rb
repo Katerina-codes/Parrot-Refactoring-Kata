@@ -9,7 +9,7 @@ class Parrot
   def speed
     case @type
     when :european_parrot
-      return base_speed
+      return EuropeanParrot.new.speed
     when :african_parrot
       return [0, base_speed - load_factor * @number_of_coconuts].max
     when :norwegian_blue_parrot
@@ -31,5 +31,11 @@ class Parrot
 
   def base_speed
     12.0;
-  end  
+  end
+end
+
+class EuropeanParrot
+  def speed
+    12.0
+  end
 end
