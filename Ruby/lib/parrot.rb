@@ -11,7 +11,7 @@ class Parrot
     when :european_parrot
       return EuropeanParrot.new.speed
     when :african_parrot
-      return [0, base_speed - load_factor * @number_of_coconuts].max
+      return AfricanParrot.new(@number_of_coconuts).speed
     when :norwegian_blue_parrot
       return (@nailed) ? 0 : compute_base_speed_for_voltage(@voltage);
     end
@@ -37,5 +37,17 @@ end
 class EuropeanParrot
   def speed
     12.0
+  end
+end
+
+class AfricanParrot
+  BASE_SPEED = 12.0
+  LOAD_FACTOR = 9.0
+
+  def initialize(number_of_coconuts)
+    @number_of_coconuts = number_of_coconuts
+  end
+  def speed
+    [0, BASE_SPEED - LOAD_FACTOR * @number_of_coconuts].max
   end
 end
